@@ -21,26 +21,21 @@
     <div class="col-md-2">
         <h2>Then:</h2></div>
 </div>
-<div class="row">
+<div class="row" id="bindingTarget">
     <div class="col-md-2">
-        <input type="text" placeholder="Search event" class="form-control" />
-        <div class="list-group">
-            <a href="#" class="list-group-item">Mail received</a>
-            <a href="#" class="list-group-item">Chatr message</a>
-            <a href="#" class="list-group-item active">File received</a>
-            <a href="#" class="list-group-item">RAM run completed</a>
+        <input type="text" placeholder="Search event" class="form-control"/>
+        <div class="list-group" data-bind="foreach: events">
+            <a href="#" class="list-group-item" data-bind="text: name, click: $root.handleEventClick"></a>
         </div>
     </div>
-    <div class="col-md-4 inset">
+    <div class="col-md-4 inset" data-bind ="with:selectedEvent">
         <div class="bordercrap">
             <h4>Event parameters</h4>
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">When received in</span>
-                <input type="text" class="form-control" placeholder="Path to folder" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon2">And the file name</span>
-                <input type="text" class="form-control" placeholder="Looks like" aria-describedby="basic-addon2">
+            <div data-bind ="foreach:parameters">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1" data-bind ="text:description"></span>
+                    <input type="text" class="form-control" data-bind="name: name, value: value" aria-describedby="basic-addon1">
+                </div>
             </div>
         </div>
     </div>
@@ -61,12 +56,15 @@
         </div>
     </div>
     <div class="col-md-2 text-right">
-        <input type="text" placeholder="Search action" class="form-control" />
-        <div class="list-group text-left">
-            <a href="#" class="list-group-item active">Send Chatr message</a>
-            <a href="#" class="list-group-item">Send e-mail</a>
-            <a href="#" class="list-group-item">Copy file</a>
-            <a href="#" class="list-group-item">Start LQA assessment</a>
+        <input type="text" placeholder="Search action" class="form-control"/>
+        <div class="list-group text-left" data-bind="foreach:actions">
+            <a href="#" class="list-group-item" data-bind ="text:name"></a>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    var viewModel = new NewFlowViewModel("@Url.Action("List", "Events")", "@Url.Action("List", "Actions")");
+    viewModel.load();
+    ko.applyBindings(viewModel, document.getElementById("bindingTarget"));
+</script>
