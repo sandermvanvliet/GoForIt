@@ -15,6 +15,11 @@ namespace GoForIt.Controllers
         {
             return View();
         }
+
+        public JsonResult Add()
+        {
+            return Json(new {success = true}, JsonRequestBehavior.AllowGet);
+        }
         
         [OutputCache(NoStore = true)]
         public JsonResult List()

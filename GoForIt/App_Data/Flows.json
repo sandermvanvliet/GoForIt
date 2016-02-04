@@ -1,6 +1,18 @@
 ﻿[
   {
     "EventName": "RAM run completed",
-    "ActionName":  "Send Chatr message"
+    "EventParameters": [
+      {
+        "Name": "LogicalName",
+        "Value": "Cashflow to Delta"
+      }
+    ],
+    "ActionName": "Send Chatr message",
+    "ActionParameters": [
+      {
+        "Name": "Text",
+        "Value": "Congrats! The run completed"
+      }
+    ]
   }
 ]
