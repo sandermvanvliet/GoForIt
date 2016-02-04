@@ -36,5 +36,13 @@
         }
         item.isSelected(true);
         self.selectedEvent(item);
-    }
+    };
+
+    self.handleActionClick = function(item) {
+        if (self.selectedAction() !== null && self.selectedAction() !== undefined) {
+            self.selectedAction().isSelected(false);
+        }
+        item.isSelected(true);
+        self.selectedAction(item);
+    };
 };

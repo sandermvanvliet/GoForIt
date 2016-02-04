@@ -25,11 +25,11 @@
     <div class="col-md-2">
         <input type="text" placeholder="Search event" class="form-control"/>
         <div class="list-group" data-bind="foreach: events">
-            <a href="#" class="list-group-item" data-bind="text: name, click: $root.handleEventClick"></a>
+            <a href="#" class="list-group-item" data-bind="text: name, click: $root.handleEventClick, css: { active: isSelected }"></a>
         </div>
     </div>
-    <div class="col-md-4 inset" data-bind ="with:selectedEvent">
-        <div class="bordercrap">
+    <div class="col-md-4 inset">
+        <div class="bordercrap" data-bind ="with: selectedEvent, visible: selectedEvent">
             <h4>Event parameters</h4>
             <div data-bind ="foreach:parameters">
                 <div class="input-group">
@@ -40,25 +40,20 @@
         </div>
     </div>
     <div class="col-md-4 inset">
-        <div class="bordercrap">
+        <div class="bordercrap" data-bind="with: selectedAction, visible: selectedAction">
             <h4>Action parameters</h4>
-            <div class="input-group">
-                <span class="input-group-addon" id="basic-addon3">Message text</span>
-                <input type="text" class="form-control" placeholder="type here" aria-describedby="basic-addon3">
+            <div data-bind="foreach:parameters">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1" data-bind="text:description"></span>
+                    <input type="text" class="form-control" data-bind="name: name, value: value" aria-describedby="basic-addon1">
+                </div>
             </div>
-            <p>
-                You can use the following parameters in your text:
-            </p>
-            <ul>
-                <li>$FileName</li>
-                <li>$ReceivedOn</li>
-            </ul>
         </div>
     </div>
     <div class="col-md-2 text-right">
         <input type="text" placeholder="Search action" class="form-control"/>
-        <div class="list-group text-left" data-bind="foreach:actions">
-            <a href="#" class="list-group-item" data-bind ="text:name"></a>
+        <div class="list-group text-left" data-bind="foreach: actions">
+            <a href="#" class="list-group-item" data-bind="text:name, click: $root.handleActionClick, css: { active: isSelected }"></a>
         </div>
     </div>
 </div>
