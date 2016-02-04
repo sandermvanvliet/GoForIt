@@ -3,10 +3,27 @@
 @{
     ViewBag.Title = "New";
 }
-
+<style type="text/css">
+    .inset {
+        padding: 2px;
+    }
+     .bordercrap {
+         border: 1px solid #e1e1e8;
+         border-radius: 4px;
+         padding: 0 4px 2px 4px;
+     }
+</style>
+<div>
+    <div class="col-md-2">
+        <h2>If:</h2></div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4"></div>
+    <div class="col-md-2">
+        <h2>Then:</h2></div>
+</div>
 <div class="row">
     <div class="col-md-2">
-        <h2>Events</h2>
+        <input type="text" placeholder="Search event" class="form-control" />
         <div class="list-group">
             <a href="#" class="list-group-item">Mail received</a>
             <a href="#" class="list-group-item">Chatr message</a>
@@ -14,14 +31,37 @@
             <a href="#" class="list-group-item">RAM run completed</a>
         </div>
     </div>
-    <div class="col-md-4">
-        <h2></h2>
+    <div class="col-md-4 inset">
+        <div class="bordercrap">
+            <h4>Event parameters</h4>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">When received in</span>
+                <input type="text" class="form-control" placeholder="Path to folder" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2">And the file name</span>
+                <input type="text" class="form-control" placeholder="Looks like" aria-describedby="basic-addon2">
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2></h2>
+    <div class="col-md-4 inset">
+        <div class="bordercrap">
+            <h4>Action parameters</h4>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">Message text</span>
+                <input type="text" class="form-control" placeholder="type here" aria-describedby="basic-addon3">
+            </div>
+            <p>
+                You can use the following parameters in your text:
+            </p>
+            <ul>
+                <li>$FileName</li>
+                <li>$ReceivedOn</li>
+            </ul>
+        </div>
     </div>
     <div class="col-md-2 text-right">
-        <h2>Actions</h2>
+        <input type="text" placeholder="Search action" class="form-control" />
         <div class="list-group text-left">
             <a href="#" class="list-group-item active">Send Chatr message</a>
             <a href="#" class="list-group-item">Send e-mail</a>
