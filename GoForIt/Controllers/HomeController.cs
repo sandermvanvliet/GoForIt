@@ -26,5 +26,15 @@ namespace GoForIt.Controllers
 
             return View();
         }
+
+        public ViewResult Overview()
+        {
+            return View();
+        }
+
+        public ViewResult New()
+        {
+            return View();
+        }
     }
 }

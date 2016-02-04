@@ -20,6 +20,10 @@
                 @Html.ActionLink("Channel D", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("New", "New", "Home")</li>
+                    <li>@Html.ActionLink("My Flows", "Overview", "Home")</li>
+                </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
