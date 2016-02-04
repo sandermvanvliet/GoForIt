@@ -1,8 +1,9 @@
-﻿var NewFlowViewModel = function (getEventsUrl, getActionsUrl) {
+﻿var NewFlowViewModel = function (getEventsUrl, getActionsUrl, addFlowUrl) {
     var self = this;
 
     self.getEventsUrl = getEventsUrl;
     self.getActionsUrl = getActionsUrl;
+    self.addFlowUrl = addFlowUrl;
 
     self.events = ko.observableArray([]);
     self.actions = ko.observableArray([]);
@@ -44,5 +45,22 @@
         }
         item.isSelected(true);
         self.selectedAction(item);
+    };
+
+    self.saveFlow = function() {
+        var data = {
+            EventName: self.selectedEvent().name(),
+            EventParameters: self.selectedEvent().parameters(),
+            ActionName: self.selectedAction().name(),
+            ActionParameters: self.selectedAction().parameters()
+        };
+
+        $.post(
+            self.addFlowUrl,
+            data,
+            function(response) {
+                alert("saved!");
+            },
+            "json");
     };
 };

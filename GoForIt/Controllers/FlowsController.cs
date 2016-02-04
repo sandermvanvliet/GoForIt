@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using GoForIt.Models;
 using Newtonsoft.Json;
 
@@ -16,12 +17,22 @@ namespace GoForIt.Controllers
             return View();
         }
 
-        public JsonResult Add()
+        [HttpPost]
+        public JsonResult Add(FlowModel flow)
         {
+            var flowsPath = Server.MapPath("~/App_Data/Flows.json");
+            var fileContents = System.IO.File.ReadAllText(flowsPath);
+
+            var data = JsonConvert.DeserializeObject<List<FlowModel>>(fileContents);
+
+            data.Add(flow);
+
+            System.IO.File.WriteAllText(flowsPath, JsonConvert.SerializeObject(data));
+
             return Json(new {success = true}, JsonRequestBehavior.AllowGet);
         }
         
-        [OutputCache(NoStore = true)]
+        [OutputCache(NoStore = true, Duration = 0)]
         public JsonResult List()
         {
             var fileContents = System.IO.File.ReadAllText(Server.MapPath("~/App_Data/Flows.json"));
