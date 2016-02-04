@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using GoForIt.Models;
+using Newtonsoft.Json;
 
 namespace GoForIt.Controllers
 {
@@ -8,30 +8,9 @@ namespace GoForIt.Controllers
     {
         public JsonResult List()
         {
-            var data = new[]
-            {
-                new EventViewModel
-                {
-                    Name = "File received",
-                    Parameters = new List<ParameterModel>
-                    {
-                        new ParameterModel { Name = "Path", Description = "When received in" }
-                    }
-                },
-                new EventViewModel
-                {
-                    Name = "RAM run completed",
-                    Parameters = new List<ParameterModel>()
-                },
-                new EventViewModel
-                {
-                    Name = "Mail received",
-                    Parameters = new List<ParameterModel>
-                    {
-                        new ParameterModel { Name = "From", Description = "Name of sender" }
-                    }
-                }
-            };
+            var fileContents = System.IO.File.ReadAllText(Server.MapPath("~/App_Data/Events.json"));
+
+            var data = JsonConvert.DeserializeObject<EventViewModel[]>(fileContents);
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }

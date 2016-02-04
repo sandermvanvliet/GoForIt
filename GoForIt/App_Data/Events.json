@@ -1,0 +1,38 @@
+﻿[
+  {
+    "Name": "File received",
+    "Parameters": [
+      {
+        "Name": "Path",
+        "Description": "When received in"
+      }
+    ]
+  },
+  {
+    "Name": "RAM run completed",
+    "Parameters": [
+      {
+        "Name": "LogicalName",
+        "Description": "Logical run name"
+      }
+    ]
+  },
+  {
+    "Name": "Mail received",
+    "Parameters": [
+      {
+        "Name": "From",
+        "Description": "Name of sender"
+      }
+    ]
+  },
+  {
+    "Name": "Toro report prepared",
+    "Parameters": [
+      {
+        "Name": "ReportName",
+        "Description": "Name of the report"
+      }
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+﻿[
+  {
+    "Name": "Send Chatr message",
+    "Parameters": [
+      {
+        "Name": "Text",
+        "Description": "The message"
+      }
+    ]
+  },
+  {
+    "Name": "Send e-mail",
+    "Parameters": [
+      {
+        "Name": "Recipients",
+        "Description": "Recipients"
+      }
+    ]
+  },
+  {
+    "Name": "Start LQA assessment",
+    "Parameters": [
+      {
+        "Name": "WWID",
+        "Description": "Client WWID"
+      }
+    ]
+  },
+  {
+    "Name": "Start RAM run",
+    "Parameters": [
+      {
+        "Name": "TemplateName",
+        "Description": "Name of the template"
+      }
+    ]
+  }
+]
