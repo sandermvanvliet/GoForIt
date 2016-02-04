@@ -1,0 +1,6 @@
+﻿[
+  {
+    "EventName": "RAM run completed",
+    "ActionName":  "Send Chatr message"
+  }
+]
