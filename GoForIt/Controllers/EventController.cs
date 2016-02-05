@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.IO;
 using System.Web.Http;
+using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
 
 namespace GoForIt.Controllers
@@ -15,6 +16,8 @@ namespace GoForIt.Controllers
                 DateTime.UtcNow.ToString("yyyyMMddHHmmss") + ".json");
 
             File.WriteAllText(path, JsonConvert.SerializeObject(value));
+
+            GlobalHost.ConnectionManager.GetHubContext<EventLogHub>().Clients.All.newEvent(value);
         }
     }
 }

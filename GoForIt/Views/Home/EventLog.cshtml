@@ -1,0 +1,39 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Event log";
+}
+
+<h2>Event log</h2>
+<ul class="list-group" data-bind="foreach:events" id="bindingTarget">
+    <li class="list-group-item"><h5 data-bind="text:type"></h5><span data-bind="text:description"></span></li>
+</ul>
+
+<script type="text/javascript">
+    var viewModel = new EventLogViewModel();
+
+    ko.applyBindings(viewModel, document.getElementById("bindingTarget"));
+</script>
+
+<script type="text/javascript">
+    var SomeEvent = function(data) {
+        var self = this;
+
+        self.type = ko.observable("Event");
+        self.description = ko.observable(data.Application);
+    };
+
+    $(function () {
+        // Declare a proxy to reference the hub.
+        var chat = $.connection.eventLogHub;
+
+        chat.client.newEvent = function (event) {
+            viewModel.events().push(new SomeEvent(event));
+        };
+       
+        // Start the connection.
+        $.connection.hub.start().done(function () {
+            console.log("hub started");
+        });
+    });
+</script>

@@ -22,5 +22,10 @@ namespace GoForIt.Controllers
 
             return View();
         }
+
+        public ViewResult EventLog()
+        {
+            return View();
+        }
     }
 }
