@@ -45,7 +45,7 @@
           },
           {
             "Name": "State",
-            "Description": "Succeeded, Failed or PartiallySucceeded"
+            "Description": "State"
           }
         ]
       }

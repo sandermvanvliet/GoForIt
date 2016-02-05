@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -48,6 +49,7 @@ namespace GoForIt.Controllers
 
                 if (eventParameterCriteria == null)
                 {
+                    Debug.WriteLine("Parameter " + eventParameter.Name + " was not found on flow");
                     return;
                 }
 
@@ -55,6 +57,7 @@ namespace GoForIt.Controllers
                 {
                     if (!eventParameter.Value.ToLower().Contains(eventParameterCriteria.Value.ToLower()))
                     {
+                        Debug.WriteLine("Parameter " + eventParameter.Name + " did not contain expected value " + eventParameterCriteria.Value);
                         return;
                     }
                 }
@@ -64,7 +67,7 @@ namespace GoForIt.Controllers
             {
                 Name = flow.ActionName,
                 Application = flow.ActionApplication,
-                Parameters = value.Parameters
+                Parameters = flow.ActionParameters
             };
             
             GlobalHost.ConnectionManager.GetHubContext<EventLogHub>().Clients.All.newAction(JsonConvert.SerializeObject(action));

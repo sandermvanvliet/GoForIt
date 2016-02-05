@@ -63,6 +63,12 @@
             function(response) {
                 if (response.success) {
                     toastr.success("Flow saved successfully", "New flow");
+                    if (self.selectedEvent() !== null) {
+                        self.selectedEvent().resetValues();
+                    }
+                    if (self.selectedAction() != null) {
+                        self.selectedAction().resetValues();
+                    }
                     self.clearSelections();
                 } else {
                     toastr.error("Failed to save flow: " + response.errorMessage, "Bugger!");

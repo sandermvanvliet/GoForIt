@@ -15,4 +15,14 @@
         });
 
     self.parameters(params);
+
+    self.resetValues = function() {
+        ko.utils.arrayForEach(
+            data.Parameters,
+            function (item) {
+                if (item.resetValues !== undefined) {
+                    item.resetValues();
+                }
+            });
+    };
 };
