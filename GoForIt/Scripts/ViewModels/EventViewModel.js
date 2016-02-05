@@ -1,9 +1,10 @@
-﻿var EventViewModel = function(data) {
+﻿var EventViewModel = function(data, applicationName) {
     var self = this;
-
+    console.log("my application name is " + applicationName);
     self.name = ko.observable(data.Name);
     self.isSelected = ko.observable(false);
     self.parameters = ko.observableArray([]);
+    self.applicationName = ko.observable(applicationName);
 
     var params = Array();
 

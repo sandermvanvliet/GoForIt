@@ -8,7 +8,7 @@
     ko.utils.arrayForEach(
         data.Events,
         function(item) {
-            events.push(new EventViewModel(item));
+            events.push(new EventViewModel(item, data.Name));
         });
 
     self.events(events);

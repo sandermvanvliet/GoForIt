@@ -50,8 +50,10 @@
     self.saveFlow = function() {
         var data = {
             EventName: self.selectedEvent().name(),
+            EventApplication: self.selectedEvent().applicationName(),
             EventParameters: self.selectedEvent().parameters(),
             ActionName: self.selectedAction().name(),
+            ActionApplication: self.selectedAction().applicationName(),
             ActionParameters: self.selectedAction().parameters()
         };
 
