@@ -3,5 +3,5 @@
 
     self.name = ko.observable(data.Name);
     self.description = ko.observable(data.Description);
-    self.value = ko.observable();
+    self.value = ko.observable(data.Value);
 };

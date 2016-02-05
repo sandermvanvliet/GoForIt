@@ -3,10 +3,29 @@
 @{
     ViewBag.Title = "Event log";
 }
-
+<style type="text/css">
+    .event {
+        border-color: #428bca;
+        border-width: 2px;
+    }
+    .action {
+        border-color: #449d44;
+        border-width: 2px;
+    }
+</style>
 <h2>Event log</h2>
 <ul class="list-group" data-bind="foreach:events" id="bindingTarget">
-    <li class="list-group-item"><h5 data-bind="text:type"></h5><span data-bind="text:description"></span></li>
+    <li class="list-group-item" data-bind="css: { 'event': type()=='event', 'action': type()=='action' }">
+        <span data-bind="text:description"></span>
+        <table>
+            <tbody data-bind="foreach:parameters">
+            <tr>
+                <td style="font-weight:bold" data-bind="text:name"></td>
+                <td data-bind="text:value"></td>
+            </tr>
+            </tbody>
+        </table>
+    </li>
 </ul>
 
 <script type="text/javascript">
@@ -16,11 +35,19 @@
 </script>
 
 <script type="text/javascript">
-    var SomeEvent = function(data) {
+    var SomeEvent = function (data) {
         var self = this;
 
-        self.type = ko.observable("Event");
+        self.type = ko.observable("event");
         self.description = ko.observable(data.Application);
+        self.parameters = ko.observableArray([]);
+
+        var items = Array();
+        ko.utils.arrayForEach(data.Parameters, function (item) {
+            items.push(new ParameterViewModel(item));
+        });
+
+        self.parameters(items);
     };
 
     $(function () {
@@ -28,9 +55,11 @@
         var chat = $.connection.eventLogHub;
 
         chat.client.newEvent = function (event) {
-            viewModel.events().push(new SomeEvent(event));
+            var data = JSON.parse(event);
+            console.log(data);
+            viewModel.events.unshift(new SomeEvent(data));
         };
-       
+
         // Start the connection.
         $.connection.hub.start().done(function () {
             console.log("hub started");

@@ -17,7 +17,7 @@ namespace GoForIt.Controllers
 
             File.WriteAllText(path, JsonConvert.SerializeObject(value));
 
-            GlobalHost.ConnectionManager.GetHubContext<EventLogHub>().Clients.All.newEvent(value);
+            GlobalHost.ConnectionManager.GetHubContext<EventLogHub>().Clients.All.newEvent(JsonConvert.SerializeObject(value));
         }
     }
 }
