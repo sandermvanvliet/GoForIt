@@ -8,25 +8,46 @@
         border-color: #428bca;
         border-width: 2px;
     }
+
     .action {
         border-color: #449d44;
         border-width: 2px;
     }
 </style>
-<h2>Event log</h2>
-<ul class="list-group" data-bind="foreach:events" id="bindingTarget">
-    <li class="list-group-item" data-bind="css: { 'event': type()=='event', 'action': type()=='action' }">
-        <span data-bind="text:description"></span>
-        <table>
-            <tbody data-bind="foreach:parameters">
-            <tr>
-                <td style="font-weight:bold" data-bind="text:name"></td>
-                <td data-bind="text:value"></td>
-            </tr>
-            </tbody>
-        </table>
-    </li>
-</ul>
+<div class="row" id="bindingTarget">
+    <div class="col-md-6">
+        <h4>Events</h4>
+        <ul class="list-group" data-bind="foreach:events">
+            <li class="list-group-item event">
+                <span data-bind="text:description"></span>
+                <table>
+                    <tbody data-bind="foreach:parameters">
+                    <tr>
+                        <td style="font-weight: bold" data-bind="text:name"></td>
+                        <td data-bind="text:value"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h4>Actions</h4>
+        <ul class="list-group" data-bind="foreach:actions">
+            <li class="list-group-item action">
+                <span data-bind="text:description"></span>
+                <table>
+                    <tbody data-bind="foreach:parameters">
+                    <tr>
+                        <td style="font-weight: bold" data-bind="text:name"></td>
+                        <td data-bind="text:value"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <script type="text/javascript">
     var viewModel = new EventLogViewModel();
@@ -35,10 +56,9 @@
 </script>
 
 <script type="text/javascript">
-    var SomeEvent = function (data, type) {
+    var SomeEvent = function (data) {
         var self = this;
 
-        self.type = ko.observable(type);
         self.description = ko.observable(data.Application);
         self.parameters = ko.observableArray([]);
 
@@ -57,13 +77,13 @@
         chat.client.newEvent = function (event) {
             var data = JSON.parse(event);
             console.log(data);
-            viewModel.events.unshift(new SomeEvent(data, "event"));
+            viewModel.events.unshift(new SomeEvent(data));
         };
 
-        chat.client.newAction = function(action) {
+        chat.client.newAction = function (action) {
             var data = JSON.parse(action);
             console.log(data);
-            viewModel.events.unshift(new SomeEvent(data, "action"));
+            viewModel.actions.unshift(new SomeEvent(data));
         };
 
         // Start the connection.

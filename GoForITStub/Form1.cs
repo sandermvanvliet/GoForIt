@@ -197,12 +197,14 @@ namespace GoForITStub
         {
             //post naar /api/event 
             // met json object, property: Application, type string, parameters (name string, value string)
-            var client = new RestClient();
-            var request = new RestRequest(ConfigurationManager.AppSettings["goForItWebUrl"], Method.POST);
+            var client = new RestClient(ConfigurationManager.AppSettings["goForItWebUrl"]);
+            var request = new RestRequest(ConfigurationManager.AppSettings["eventApiUrl"], Method.POST);
 
             request.AddJsonBody(jsonEventObject);
 
-            client.Execute(request);
+            var response = client.Execute(request);
+
+            return;
         }
     }
 
