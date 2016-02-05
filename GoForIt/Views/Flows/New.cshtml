@@ -24,9 +24,12 @@
 <div class="row" id="bindingTarget">
     <div class="col-md-2">
         <input type="text" placeholder="Search event" class="form-control"/>
+        <!-- ko foreach: events -->
+        <h4 data-bind="text: name"></h4>
         <div class="list-group" data-bind="foreach: events">
             <a href="#" class="list-group-item" data-bind="text: name, click: $root.handleEventClick, css: { active: isSelected }"></a>
         </div>
+        <!-- /ko -->
     </div>
     <div class="col-md-8">
         <div class="row">
@@ -46,8 +49,8 @@
                     <h4>Action parameters</h4>
                     <div data-bind="foreach:parameters">
                         <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1" data-bind="text:description"></span>
-                            <input type="text" class="form-control" data-bind="name: name, value: value" aria-describedby="basic-addon1">
+                            <span class="input-group-addon" id="basic-addon2" data-bind="text:description"></span>
+                            <input type="text" class="form-control" data-bind="name: name, value: value" aria-describedby="basic-addon2">
                         </div>
                     </div>
                 </div>
@@ -59,9 +62,12 @@
     </div>
     <div class="col-md-2 text-right">
         <input type="text" placeholder="Search action" class="form-control"/>
-        <div class="list-group text-left" data-bind="foreach: actions">
-            <a href="#" class="list-group-item" data-bind="text:name, click: $root.handleActionClick, css: { active: isSelected }"></a>
+        <!-- ko foreach: actions -->
+        <h4 data-bind="text: name"></h4>
+        <div class="list-group" data-bind="foreach: events">
+            <a href="#" class="list-group-item" data-bind="text: name, click: $root.handleActionClick, css: { active: isSelected }"></a>
         </div>
+        <!-- /ko -->
     </div>
 </div>
 

@@ -1,37 +1,99 @@
 ﻿[
   {
-    "Name": "File received",
-    "Parameters": [
+    "Name": "TFS",
+    "Events": [
       {
-        "Name": "Path",
-        "Description": "When received in"
+        "Name": "New bug",
+        "Parameters": [
+          {
+            "Name": "Tag",
+            "Description": "The bug has a specific tag"
+          },
+          {
+            "Name": "LoggedBy",
+            "Description": "The bug is logged by this user"
+          }
+        ]
+      },
+      {
+        "Name": "New story",
+        "Parameters": [
+          {
+            "Name": "Tag",
+            "Description": "The story has a specific tag"
+          },
+          {
+            "Name": "LoggedBy",
+            "Description": "The story is created by this user"
+          }
+        ]
+      },
+      {
+        "Name": "Build completed",
+        "Parameters": [
+          {
+            "Name": "Name",
+            "Description": "Logical name of the build"
+          },
+          {
+            "Name": "State",
+            "Description": "Succeeded, Failed or PartiallySucceeded"
+          }
+        ]
+      },
+      {
+        "Name": "Application deployed",
+        "Parameters": [
+          {
+            "Name": "Name",
+            "Description": "Name of the application"
+          },
+          {
+            "Name": "Environment",
+            "Description": "Name of the environment"
+          }
+        ]
       }
     ]
   },
   {
-    "Name": "RAM run completed",
-    "Parameters": [
+    "Name": "RAM+",
+    "Events": [
       {
-        "Name": "LogicalName",
-        "Description": "Logical run name"
+        "Name": "Run completed",
+        "Parameters": [
+          {
+            "Name": "LogicalName",
+            "Description": "Logical run name"
+          }
+        ]
       }
     ]
   },
   {
-    "Name": "Mail received",
-    "Parameters": [
+    "Name": "Exchange",
+    "Events": [
       {
-        "Name": "From",
-        "Description": "Name of sender"
+        "Name": "Mail received",
+        "Parameters": [ ]
+      },
+      {
+        "Name": "Reminder",
+        "Parameters": [ ]
       }
     ]
   },
   {
-    "Name": "Toro report prepared",
-    "Parameters": [
+    "Name": "News feed",
+    "Events": [
       {
-        "Name": "ReportName",
-        "Description": "Name of the report"
+        "Name": "New Article",
+        "Parameters": [
+          {
+            "Name": "MessageContains",
+            "Description": "Look for this text in the article"
+          }
+        ]
       }
     ]
   }

@@ -15,7 +15,7 @@
             .done(function (data) {
                 var events = Array();
                 ko.utils.arrayForEach(data, function (item) {
-                    events.push(new EventViewModel(item));
+                    events.push(new ApplicationEventsViewModel(item));
                 });
 
                 self.events(events);
@@ -24,7 +24,7 @@
             .done(function (data) {
                 var actions = Array();
                 ko.utils.arrayForEach(data, function (item) {
-                    actions.push(new EventViewModel(item));
+                    actions.push(new ApplicationEventsViewModel(item));
                 });
 
                 self.actions(actions);

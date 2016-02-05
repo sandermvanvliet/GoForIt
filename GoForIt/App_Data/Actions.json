@@ -1,37 +1,43 @@
 ﻿[
   {
-    "Name": "Send Chatr message",
-    "Parameters": [
+    "Name": "Chatr",
+    "Events": [
       {
-        "Name": "Text",
-        "Description": "The message"
+        "Name": "New message",
+        "Parameters": [
+          {
+            "Name": "Text",
+            "Description": "The message"
+          }
+        ]
       }
     ]
   },
   {
-    "Name": "Send e-mail",
-    "Parameters": [
+    "Name": "LQA",
+    "Events": [
       {
-        "Name": "Recipients",
-        "Description": "Recipients"
+        "Name": "Start LQA assessment",
+        "Parameters": [
+          {
+            "Name": "WWID",
+            "Description": "Client WWID"
+          }
+        ]
       }
     ]
   },
   {
-    "Name": "Start LQA assessment",
-    "Parameters": [
+    "Name": "RAM+",
+    "Events": [
       {
-        "Name": "WWID",
-        "Description": "Client WWID"
-      }
-    ]
-  },
-  {
-    "Name": "Start RAM run",
-    "Parameters": [
-      {
-        "Name": "TemplateName",
-        "Description": "Name of the template"
+        "Name": "Start run",
+        "Parameters": [
+          {
+            "Name": "TemplateName",
+            "Description": "Name of the template"
+          }
+        ]
       }
     ]
   }
