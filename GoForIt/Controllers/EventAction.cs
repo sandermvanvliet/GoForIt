@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GoForIt.Models;
 
 namespace GoForIt.Controllers
 {
-    public class Event
+    public class EventAction
     {
-        public string Application { get; set; }
         public string Name { get; set; }
-        public DateTime Timestamp { get; set; }
+        public string Application { get; set; }
         public List<ParameterModel> Parameters { get; set; }
     }
 }

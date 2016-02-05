@@ -35,10 +35,10 @@
 </script>
 
 <script type="text/javascript">
-    var SomeEvent = function (data) {
+    var SomeEvent = function (data, type) {
         var self = this;
 
-        self.type = ko.observable("event");
+        self.type = ko.observable(type);
         self.description = ko.observable(data.Application);
         self.parameters = ko.observableArray([]);
 
@@ -57,7 +57,13 @@
         chat.client.newEvent = function (event) {
             var data = JSON.parse(event);
             console.log(data);
-            viewModel.events.unshift(new SomeEvent(data));
+            viewModel.events.unshift(new SomeEvent(data, "event"));
+        };
+
+        chat.client.newAction = function(action) {
+            var data = JSON.parse(action);
+            console.log(data);
+            viewModel.events.unshift(new SomeEvent(data, "action"));
         };
 
         // Start the connection.
