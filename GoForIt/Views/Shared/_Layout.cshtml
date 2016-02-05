@@ -7,10 +7,11 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     <script type="text/javascript" src="~/Scripts/knockout-3.4.0.js"></script>
     <script type="text/javascript" src="~/Scripts/toastr.min.js"></script>
     @Scripts.Render("~/bundles/viewmodels")
-    <link rel="stylesheet" type="text/css" href="~/Content/toastr.min.css"/>
+    <link rel="stylesheet" type="text/css" href="~/Content/toastr.min.css" />
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
 </head>
@@ -41,9 +42,6 @@
             <p>&copy; @DateTime.Now.Year - Nerds from U.N.C.L.E.</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
