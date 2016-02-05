@@ -30,7 +30,7 @@
     </div>
     <div class="col-md-8">
         <div class="row">
-            <div class="col-md-4 inset">
+            <div class="col-md-6 inset">
                 <div class="bordercrap" data-bind="with: selectedEvent, visible: selectedEvent">
                     <h4>Event parameters</h4>
                     <div data-bind="foreach:parameters">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 inset">
+            <div class="col-md-6 inset">
                 <div class="bordercrap" data-bind="with: selectedAction, visible: selectedAction">
                     <h4>Action parameters</h4>
                     <div data-bind="foreach:parameters">
@@ -53,10 +53,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-8">
-                <button class="btn btn-primary" data-bind="click: $root.saveFlow">Save</button>
-            </div>
+        <div class="row text-right">
+                <button class="btn btn-default" data-bind="click: $root.saveFlow">Save</button>
         </div>
     </div>
     <div class="col-md-2 text-right">

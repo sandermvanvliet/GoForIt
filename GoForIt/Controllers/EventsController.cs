@@ -6,7 +6,7 @@ namespace GoForIt.Controllers
 {
     public class EventsController : Controller
     {
-        [OutputCache(NoStore = true)]
+        [OutputCache(NoStore = true, Duration = 0)]
         public JsonResult List()
         {
             var fileContents = System.IO.File.ReadAllText(Server.MapPath("~/App_Data/Events.json"));

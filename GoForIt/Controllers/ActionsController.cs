@@ -6,7 +6,7 @@ namespace GoForIt.Controllers
 {
     public class ActionsController : Controller
     {
-        [OutputCache(NoStore = true)]
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult List()
         {
             var fileContents = System.IO.File.ReadAllText(Server.MapPath("~/App_Data/Actions.json"));
