@@ -1,1 +1,1 @@
-[{"EventName":"New bug","EventApplication":"TFS","EventParameters":[{"Name":"Tag","Description":"The bug has a specific tag","Value":"null"},{"Name":"LoggedBy","Description":"The bug is logged by this user","Value":"null"}],"ActionName":"New message","ActionApplication":"Chatr","ActionParameters":[{"Name":"Text","Description":"The message","Value":"null"}]}]
+[]

@@ -40,6 +40,26 @@ namespace GoForIt.Controllers
 
         private void ExecuteAction(FlowModel flow, Event value)
         {
+            foreach (var eventParameter in value.Parameters)
+            {
+                var eventParameterCriteria =
+                    flow.EventParameters.SingleOrDefault(
+                        ep => ep.Name.Equals(eventParameter.Name, StringComparison.InvariantCultureIgnoreCase));
+
+                if (eventParameterCriteria == null)
+                {
+                    return;
+                }
+
+                if (!string.IsNullOrEmpty(eventParameterCriteria.Value) && eventParameterCriteria.Value != "null")
+                {
+                    if (!eventParameter.Value.ToLower().Contains(eventParameterCriteria.Value.ToLower()))
+                    {
+                        return;
+                    }
+                }
+            }
+
             var action = new EventAction
             {
                 Name = flow.ActionName,

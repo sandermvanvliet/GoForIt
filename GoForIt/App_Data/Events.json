@@ -12,6 +12,10 @@
           {
             "Name": "LoggedBy",
             "Description": "The bug is logged by this user"
+          },
+          {
+            "Name": "Product Backlog Item",
+            "Description": "The Id of the bug"
           }
         ]
       },
@@ -25,6 +29,10 @@
           {
             "Name": "LoggedBy",
             "Description": "The story is created by this user"
+          },
+          {
+            "Name": "Product Backlog Item",
+            "Description": "The Id of the bug"
           }
         ]
       },
@@ -32,7 +40,7 @@
         "Name": "Build completed",
         "Parameters": [
           {
-            "Name": "Name",
+            "Name": "LogicalName",
             "Description": "Logical name of the build"
           },
           {
@@ -40,7 +48,12 @@
             "Description": "Succeeded, Failed or PartiallySucceeded"
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "Name": "XLDeploy",
+    "Events": [
       {
         "Name": "Application deployed",
         "Parameters": [
@@ -75,11 +88,25 @@
     "Events": [
       {
         "Name": "Mail received",
-        "Parameters": [ ]
+        "Parameters": [
+          {
+            "Name": "From",
+            "Description": "The sender of the e-mail"
+          },
+          {
+            "Name": "Subject",
+            "Description": "The subject contains"
+          }
+        ]
       },
       {
         "Name": "Reminder",
-        "Parameters": [ ]
+        "Parameters": [
+          {
+            "Name": "Name",
+            "Description": "The name of the apppointment"
+          }
+        ]
       }
     ]
   },
