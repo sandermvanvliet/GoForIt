@@ -59,8 +59,24 @@
             self.addFlowUrl,
             data,
             function(response) {
-                alert("saved!");
+                if (response.success) {
+                    toastr.success("Flow saved successfully", "New flow");
+                    self.clearSelections();
+                } else {
+                    toastr.error("Failed to save flow: " + response.errorMessage, "Bugger!");
+                }
             },
             "json");
+    };
+
+    self.clearSelections = function() {
+        if (self.selectedEvent() !== undefined && self.selectedEvent() !== null) {
+            self.selectedEvent().isSelected(false);
+            self.selectedEvent(null);
+        }
+        if (self.selectedAction() !== undefined && self.selectedAction() !== null) {
+            self.selectedAction().isSelected(false);
+            self.selectedAction(null);
+        }
     };
 };

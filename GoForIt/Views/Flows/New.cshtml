@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="row text-right">
+        <div class="row text-right" data-bind="visible: (selectedEvent() && selectedAction())">
                 <button class="btn btn-default" data-bind="click: $root.saveFlow">Save</button>
         </div>
     </div>
