@@ -2,3 +2,24 @@
     ViewBag.Title = "Home Page";
 }
 
+<button onclick="sendEvent()">Send event</button>
+<script type="text/javascript">
+    function sendEvent() {
+        var data = {
+            "Application": "News",
+            "Timestamp": new Date(),
+            "Parameters": [
+                {
+                    "Name": "Title",
+                    "Value":"Some new message"
+                },
+                {
+                    "Name": "Text",
+                    "Value": "Lorem ipsum, dolor sit amet"
+                }
+            ]
+        };
+
+        $.post("/api/event", data, function(response) { alert("done"); }, "json");
+    }
+</script>
