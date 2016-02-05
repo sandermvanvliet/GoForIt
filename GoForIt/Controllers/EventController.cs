@@ -34,7 +34,7 @@ namespace GoForIt.Controllers
             var flows = JsonConvert.DeserializeObject<List<FlowModel>>(data);
 
             flows
-                .Where(flow => flow.EventApplication == value.Application && flow.EventName == value.Name)
+                .Where(flow => flow.EventApplication.Equals(value.Application, StringComparison.InvariantCultureIgnoreCase) && flow.EventName.Equals(value.Name, StringComparison.InvariantCultureIgnoreCase))
                 .ToList()
                 .ForEach(flow => ExecuteAction(flow, value));
         }
